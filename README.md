@@ -1,6 +1,6 @@
-# Bank Of E - A Modernized Class 12th CBSE CS Project
+# SQLBucks 
 
-This is a modernized version of the class 12th CBSE Computer Science project, coded in Python. It now uses SQLAlchemy ORM for database interactions and Alembic for database migrations, implementing better security and schema management practices.
+This project was made to explore Python and MySQL using SQLAlchemy and Alembic. The project is a simple banking system with basic functionalities.
 
 ## Prerequisites
 
@@ -28,9 +28,14 @@ This is a modernized version of the class 12th CBSE Computer Science project, co
     alembic upgrade head
     ```
 
-4. **Run the Application**:
+4. **(Optional) Populate Database**:
     ```bash
-    python app.py
+    python src/populate_db.py
+    ```
+
+6. **Run the Application**:
+    ```bash
+    python src/app.py
     ```
 
 ## Usage
