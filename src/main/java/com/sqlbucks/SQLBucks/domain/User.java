@@ -1,7 +1,10 @@
 package com.sqlbucks.SQLBucks.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
@@ -10,22 +13,25 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "credentials")
+@Table(name = "users")
 public class User {
-
     @Id
-    @Column(length = 50)
-    private String userid;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(columnDefinition = "UUID", updatable = false, nullable = false)
+    private UUID id;
 
     @Column(name = "pwd_hash", nullable = false)
     private String pwdHash;
 
     @OneToOne
-    @JoinColumn(name = "cust_id", referencedColumnName = "cust_id")
+    @JoinColumn(name = "customer_id", referencedColumnName = "cust_id")
+    @JsonBackReference
     private Customer customer;
 
     private boolean admin;
